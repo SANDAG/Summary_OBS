@@ -7,6 +7,18 @@
     "text": "About this site"
   },
   {
+    "objectID": "age.html",
+    "href": "age.html",
+    "title": "Age",
+    "section": "",
+    "text": "Test text.",
+    "crumbs": [
+      "Home",
+      "Demographics",
+      "Age"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "quarto",
