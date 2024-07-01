@@ -7,15 +7,27 @@
     "text": "About this site"
   },
   {
-    "objectID": "age.html",
-    "href": "age.html",
-    "title": "Age",
+    "objectID": "2023-survey.html",
+    "href": "2023-survey.html",
+    "title": "2023 Survey",
     "section": "",
-    "text": "Test text again",
+    "text": "Data\nxlsx_path = (\n    Path(CONFIG['obs_2023']['paths']['obs_dir'])\n    /CONFIG['obs_2023']['paths']['od_xlsx']\n)\nresults_sheet = CONFIG['obs_2023']['sheets']['results']\n\nobs = (\n    pd.read_excel(xlsx_path, sheet_name=results_sheet)\n    .set_index('ID')\n)",
     "crumbs": [
       "Home",
-      "Demographics",
-      "Age"
+      "Survey Summaries",
+      "2023 Survey"
+    ]
+  },
+  {
+    "objectID": "2023-survey.html#demographics",
+    "href": "2023-survey.html#demographics",
+    "title": "2023 Survey",
+    "section": "Demographics",
+    "text": "Demographics\n\nAge\n\n\nData\n# Categorize based on HHTS categories\nhhts_ages = {\n    'Under 5': 5,\n    '5-15': 15,\n    '16-17': 17,\n    '17-18': 18,\n    '25-34': 34,\n    '35-44': 44,\n    '45-54': 54,\n    '55-64': 64,\n    '65-74': 74,\n    '75-84': 84,\n    '85 or Older': np.inf,\n}\n\nage = pd.DataFrame(\n    {\n        'age': (obs.DATE_COMPLETED.dt.year - obs.YEAR_BORN),\n        'age_category': pd.cut(\n            # Calculate age based on survey date and respondents birth year\n            x=(obs.DATE_COMPLETED.dt.year - obs.YEAR_BORN),\n            bins=[0] + list(hhts_ages.values()),\n            labels=list(hhts_ages.keys())\n        ),\n        'unlinked_weight': obs.UNLINKED_WGHT_FCTR,\n        'linked_weight': obs.LINKED_WGHT_FCTR,\n    }\n)\n\n\n\n\nTable\nunweighted = age.groupby('age_category', observed=True).size()\nunlinked = age.groupby('age_category', observed=True).unlinked_weight.sum()\nlinked = age.groupby('age_category', observed=True).linked_weight.sum()\ntotal_valid = age.dropna().size\ntotal = age.size\n\nsummary = pd.DataFrame(\n    {\n        ('unweighted', 'count'): unweighted,\n        ('unweighted', 'percent'): unweighted / unweighted.sum(),\n        ('unlinked_weight', 'count'): unlinked,\n        ('unlinked_weight', 'percent'): unlinked / unlinked.sum(),\n        ('linked_weight', 'count'): linked,\n        ('linked_weight', 'percent'): linked / linked.sum(),\n    }\n)\n\ntable = (\n    pd.concat(\n        [\n            summary,\n            pd.DataFrame(\n                [\n                    {'age_category': 'Total valid', ('unweighted', 'count'): total_valid, ('unweighted', 'percent'): total_valid/total},\n                    {'age_category': 'Total', ('unweighted', 'count'): total}\n                ],\n                index=['Total valid', 'Total'],\n            )\n            .set_index('age_category')\n            \n        ]\n    )\n    .to_html(\n        formatters={\n            ('unweighted', 'count'): '{:,.0f}'.format,\n            ('unweighted', 'percent'): '{:,.2%}'.format,\n            ('unlinked_weight', 'count'): '{:,.0f}'.format,\n            ('unlinked_weight', 'percent'): '{:,.2%}'.format,\n            ('linked_weight', 'count'): '{:,.0f}'.format,\n            ('linked_weight', 'percent'): '{:,.2%}'.format,\n        }\n    )\n)\n\ndisplay(HTML(table))\n\n\n\n\nChart\nfigure = go.Figure()\nfigure.add_trace(\n    go.Bar(\n        x=summary.index,\n        y=summary[('unweighted', 'percent')],\n        name='Unweighted',\n    )\n)\nfigure.add_trace(\n    go.Bar(\n        x=summary.index,\n        y=summary[('unlinked_weight', 'percent')],\n        name='Weighted (Unlinked)',\n    )\n)\nfigure.add_trace(\n    go.Bar(\n        x=summary.index,\n        y=summary[('linked_weight', 'percent')],\n        name='Weighted (Linked)',\n    )\n)\nfigure.update_layout(\n    title_text='Unweighted and Weighted Responses by Age',\n    yaxis_range=[0, 1],\n    yaxis_tickformat=',.0%',\n    xaxis_title='Age',\n    yaxis_title='Percent',\n)\n\nfigure.show()\n\n\n\n\nIncome",
+    "crumbs": [
+      "Home",
+      "Survey Summaries",
+      "2023 Survey"
     ]
   },
   {
