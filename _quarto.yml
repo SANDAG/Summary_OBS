@@ -5,17 +5,22 @@ website:
   title: "quarto"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: Survey
+        menu: 
+          - text: "2015"
+            file: notebooks/2015/index.qmd
+          - text: "2023"
+            file: notebooks/2023/index.qmd
+
   sidebar:
-    style: "docked"
-    search: true
-    contents:
-      - section: "Survey Summaries"
-        contents:
-          - 2023-survey.ipynb
-          - 2015-survey.ipynb
+    - title: "2023"
+      style: "docked"
+      search: true
+      contents:
+        - notebooks/2023/index.qmd
+        - section: "Demographics"
+          contents:
+            - notebooks/2023/demographics/age.ipynb
 
 execute:
   freeze: auto
