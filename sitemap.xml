@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://SANDAG.github.io/Summary_OBS/about.html</loc>
-    <lastmod>2024-07-01T18:55:34.048Z</lastmod>
+    <loc>https://SANDAG.github.io/Summary_OBS/index.html</loc>
+    <lastmod>2024-06-28T22:18:05.162Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/2023-survey.html</loc>
-    <lastmod>2024-07-01T18:55:34.048Z</lastmod>
+    <lastmod>2024-07-01T18:54:24.667Z</lastmod>
   </url>
   <url>
-    <loc>https://SANDAG.github.io/Summary_OBS/index.html</loc>
-    <lastmod>2024-07-01T18:55:34.048Z</lastmod>
+    <loc>https://SANDAG.github.io/Summary_OBS/2015-survey.html</loc>
+    <lastmod>2024-07-01T17:10:53.141Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SANDAG.github.io/Summary_OBS/about.html</loc>
+    <lastmod>2024-06-28T22:18:05.157Z</lastmod>
   </url>
 </urlset>
