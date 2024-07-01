@@ -12,10 +12,10 @@ website:
     style: "docked"
     search: true
     contents:
-      - section: "Demographics"
+      - section: "Survey Summaries"
         contents:
-          - age.ipynb
-
+          - 2023-survey.ipynb
+          - 2015-survey.ipynb
 
 execute:
   freeze: auto
