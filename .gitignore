@@ -4,3 +4,5 @@ site_libs
 
 config.toml
 data/
+
+/__pycache__/

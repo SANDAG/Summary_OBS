@@ -3,24 +3,16 @@ project:
 
 website:
   title: "quarto"
-  navbar:
-    left:
-      - text: Survey
-        menu: 
-          - text: "2015"
-            file: notebooks/2015/index.qmd
-          - text: "2023"
-            file: notebooks/2023/index.qmd
+
 
   sidebar:
-    - title: "2023"
       style: "docked"
       search: true
       contents:
-        - notebooks/2023/index.qmd
-        - section: "Demographics"
-          contents:
+          - section: "2023 Onboard Survey"
+            contents:
             - notebooks/2023/demographics/age.ipynb
+          - section: "2015 Onboard Survey"
 
 execute:
   freeze: auto
