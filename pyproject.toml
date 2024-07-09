@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "obs"
+version = "0.1.0"
+description = "Package for data, tools, and analytics related to Onboard data."
+readme = "README.md"
+requires-python = ">=3.12"
+# license = {file = "LICENSE.txt"}
+# keywords = []
+authors = [
+    { name = "Timothy Andersen", email = "tandersen@sandag.org" }
+]
+maintainers = [
+    { name = "Timothy Andersen", email = "tandersen@sandag.org" }
+]
+dependencies = [
+    "ipykernel",
+    "numpy",
+    "openpyxl",
+    "pandas",
+    "plotly",
+    "toml",
+]
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "ruff",
+]
+
+[project.urls]
+"Reports" = "https://github.com/Summary_OBS"
+
+[project.scripts]
+obs="obs.main:app"
+
+[tool.setuptools]
+#package-data = {"obs" = []}
