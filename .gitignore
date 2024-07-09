@@ -1,10 +1,22 @@
+# Exclude local config folder
+config.toml
+
+# Exclude local data folder
+/data/
+
+# Exclude notebooks in route to use as testing
+/*.ipynb
+
+# Exclude python environment artifacts
+.venv
+__pycache__/
+*.egg-info
+
+# Exclude Quarto artifacts
 /.quarto/
 /_site/
+_freeze/
 site_libs
 
-config.toml
-data/
-
-.venv
-/__pycache__/
-*.egg-info
+# Exclude git precommit artifacts
+.ruff_cache

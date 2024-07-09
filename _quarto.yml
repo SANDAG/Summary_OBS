@@ -1,5 +1,7 @@
 project:
   type: website
+  render:
+    - "notebooks/*"
 
 website:
   title: "quarto"
@@ -11,8 +13,15 @@ website:
       contents:
           - section: "2023 Onboard Survey"
             contents:
-            - notebooks/2023/demographics/age.ipynb
+            - section: "Demographics"
+              contents:
+              - notebooks/2023/demographics/age.ipynb
           - section: "2015 Onboard Survey"
+            contents:
+            - section: "Demographics"
+              contents:
+              - notebooks/2015/demographics/age.ipynb
+
 
 execute:
   freeze: auto

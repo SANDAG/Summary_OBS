@@ -19,11 +19,15 @@ maintainers = [
 ]
 dependencies = [
     "ipykernel",
+    "loguru",
+    "nbformat",
     "numpy",
     "openpyxl",
     "pandas",
+    "pandera",
     "plotly",
     "toml",
+    "typer",
 ]
 [project.optional-dependencies]
 dev = [
@@ -35,7 +39,7 @@ dev = [
 "Reports" = "https://github.com/Summary_OBS"
 
 [project.scripts]
-obs="obs.main:app"
+obs="obs.app.main:app"
 
 [tool.setuptools]
 #package-data = {"obs" = []}
