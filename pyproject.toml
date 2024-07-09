@@ -28,7 +28,7 @@ dependencies = [
     "plotly",
     "toml",
     "typer",
-    "yaml",
+    "quarto",
 ]
 [project.optional-dependencies]
 dev = [
