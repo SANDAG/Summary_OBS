@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/mode/transit_mode.html</loc>
+    <lastmod>2024-07-10T21:40:50.615Z</lastmod>
+  </url>
+  <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/index.html</loc>
     <lastmod>2024-07-01T19:24:50.822Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/demographics/age.html</loc>
-    <lastmod>2024-07-10T19:01:34.080Z</lastmod>
+    <lastmod>2024-07-10T21:40:27.550Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/demographics/age.html</loc>
-    <lastmod>2024-07-10T18:54:45.728Z</lastmod>
+    <lastmod>2024-07-10T21:40:14.592Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/index.html</loc>
     <lastmod>2024-07-01T19:33:00.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/mode/transit_mode.html</loc>
+    <lastmod>2024-07-10T21:40:40.626Z</lastmod>
   </url>
 </urlset>
