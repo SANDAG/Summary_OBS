@@ -106,7 +106,7 @@ class OBS2023:
     @cached_property
     def age(self) -> pd.DataFrame:
         def map_age_category(age: int | None) -> str | None:
-            if age:
+            if age and not pd.isna(age):
                 if age < 5:
                     return "Under 5"  # noqa: E701
                 elif age < 16:
@@ -133,7 +133,7 @@ class OBS2023:
                 return None
 
         def map_yas(age: int | None) -> str | None:
-            if age:
+            if age and not pd.isna(age):
                 if age < 18:
                     return "Youth"  # noqa: E701
                 elif age < 65:
