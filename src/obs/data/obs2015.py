@@ -99,6 +99,7 @@ class OBS2015:
             .merge(self.routes, how="left", on="route")
             # TODO: Assume Local for now, need to look up historic route #s
             .assign(mode=lambda df: df["mode"].fillna("Local"))
+            .rename(columns={"mode": "transit_mode"})
             .set_index("ID")
         )
 

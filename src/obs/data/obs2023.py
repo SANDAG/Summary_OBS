@@ -100,6 +100,7 @@ class OBS2023:
             .assign(route=lambda df: df.route.apply(lambda x: int(x.split("_")[2])))
             .reset_index()
             .merge(self.routes, how="left", on="route")
+            .rename(columns={"mode": "transit_mode"})
             .set_index("ID")
         )
 

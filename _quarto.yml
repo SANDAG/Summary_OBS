@@ -16,11 +16,18 @@ website:
             - section: "Demographics"
               contents:
               - notebooks/2023/demographics/age.ipynb
+            - section: "Mode"
+              contents:
+              - notebooks/2023/mode/transit_mode.ipynb
           - section: "2015 Onboard Survey"
             contents:
             - section: "Demographics"
               contents:
               - notebooks/2015/demographics/age.ipynb
+            - section: "Mode"
+              contents:
+              - notebooks/2015/mode/transit_mode.ipynb
+
 
 
 execute:
