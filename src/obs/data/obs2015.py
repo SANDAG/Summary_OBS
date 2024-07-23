@@ -153,26 +153,28 @@ class OBS2015:
             .astype("string")
             .map(
                 {
-                    "Walked": "Walk transit",
-                    "Bike": "Walk transit",
-                    "Was dropped off by someone": "KNR transit",
-                    "Drove alone and parked": "PNR transit",
-                    "Drove or rode with others and parked": "PNR transit",
-                    "Wheelchair": "Walk transit",
-                    "Skateboard": "Walk transit",
-                    "Carshare (i.e. car2go, Zipcar, etc.)": "TNC transit",
-                    "Taxi, Uber, Lyft, etc.": "TNC transit",
-                    "Free Shuttle": "TNC transit",
+                    "Walked": "Walk to transit",
+                    "Bike": "Bike to transit",
+                    "Was dropped off by someone": "KNR to transit",
+                    "Drove alone and parked": "PNR to transit",
+                    "Drove or rode with others and parked": "PNR to transit",
+                    "Wheelchair": "Walk to transit",
+                    "Skateboard": "Walk to transit",
+                    "Carshare (i.e. car2go, Zipcar, etc.)": "TNC to transit",
+                    "Taxi, Uber, Lyft, etc.": "TNC to transit",
+                    "Free Shuttle": "TNC to transit",
                     "Other": None,
                 }
             )
             .astype(
                 pd.CategoricalDtype(
                     categories=[
-                        "Walk transit",
-                        "PNR transit",
-                        "KNR transit",
-                        "TNC transit",
+                        "Walk to transit",
+                        "Bike to transit",
+                        "Micromobility to transit",
+                        "PNR to transit",
+                        "KNR to transit",
+                        "TNC to transit",
                     ],
                     ordered=True,
                 ),
