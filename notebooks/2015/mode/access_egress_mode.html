@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Transit Mode – quarto</title>
+<title>Access/Egress Mode – quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,7 +138,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">2023 Onboard Survey</li><li class="breadcrumb-item"><a href="../../../notebooks/2023/mode/transit_mode.html">Mode</a></li><li class="breadcrumb-item"><a href="../../../notebooks/2023/mode/transit_mode.html">Transit Mode</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      quarto
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -174,16 +176,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Mode</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notebooks/2023/mode/transit_mode.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../notebooks/2023/mode/transit_mode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Transit Mode</span></a>
   </div>
 </li>
@@ -276,17 +278,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
-  <li><a href="#table" id="toc-table" class="nav-link" data-scroll-target="#table">Table</a></li>
-  <li><a href="#charts" id="toc-charts" class="nav-link" data-scroll-target="#charts">Charts</a></li>
+  <li><a href="#access-mode" id="toc-access-mode" class="nav-link" data-scroll-target="#access-mode">Access mode</a></li>
+  <li><a href="#access-mode-abm-categories" id="toc-access-mode-abm-categories" class="nav-link" data-scroll-target="#access-mode-abm-categories">Access Mode (ABM Categories)</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">2023 Onboard Survey</li><li class="breadcrumb-item"><a href="../../../notebooks/2023/mode/transit_mode.html">Mode</a></li><li class="breadcrumb-item"><a href="../../../notebooks/2023/mode/transit_mode.html">Transit Mode</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Transit Mode</h1>
+<h1 class="title">Access/Egress Mode</h1>
 </div>
 
 
@@ -308,79 +310,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="cell-3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Data</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorize based on HHTS categories</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>transit_mode <span class="op">=</span> pd.concat(</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        pd.read_parquet(SAVE_DIR <span class="op">/</span> <span class="st">"transit_mode.parquet"</span>),</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        pd.read_parquet(SAVE_DIR <span class="op">/</span> <span class="st">"weights.parquet"</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>access_egress_mode <span class="op">=</span> pd.concat(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        pd.read_parquet(SAVE_DIR <span class="op">/</span> <span class="st">"access_egress_mode.parquet"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        pd.read_parquet(SAVE_DIR <span class="op">/</span> <span class="st">"weights.parquet"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="table" class="level2">
-<h2 class="anchored" data-anchor-id="table">Table</h2>
+<section id="access-mode" class="level2">
+<h2 class="anchored" data-anchor-id="access-mode">Access mode</h2>
 <div id="cell-5" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Table</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>unweighted <span class="op">=</span> transit_mode.groupby(<span class="st">"transit_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).size()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>unlinked <span class="op">=</span> transit_mode.groupby(<span class="st">"transit_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).unlinked_weight.<span class="bu">sum</span>()</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>linked <span class="op">=</span> transit_mode.groupby(<span class="st">"transit_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).linked_weight.<span class="bu">sum</span>()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>total_valid <span class="op">=</span> <span class="bu">len</span>(transit_mode.dropna())</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">len</span>(transit_mode)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>unlinked_total <span class="op">=</span> transit_mode.unlinked_weight.<span class="bu">sum</span>()</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>linked_total <span class="op">=</span> transit_mode.linked_weight.<span class="bu">sum</span>()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): unweighted,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): unweighted <span class="op">/</span> unweighted.<span class="bu">sum</span>(),</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked <span class="op">/</span> unlinked.<span class="bu">sum</span>(),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked <span class="op">/</span> linked.<span class="bu">sum</span>(),</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.concat(</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        summary,</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        pd.DataFrame(</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>            [</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                {</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total valid"</span>,</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total_valid,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): total_valid <span class="op">/</span> total,</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked.<span class="bu">sum</span>(),</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked.<span class="bu">sum</span>() <span class="op">/</span> unlinked_total,</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked.<span class="bu">sum</span>(),</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked.<span class="bu">sum</span>() <span class="op">/</span> linked_total,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                },</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                {</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total"</span>,</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total,</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked_total,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked_total,</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                },</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            ],</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>            index<span class="op">=</span>[<span class="st">"Total valid"</span>, <span class="st">"Total"</span>],</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        ).set_index(<span class="st">"age_category"</span>),</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>).to_html(</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    formatters<span class="op">=</span>{</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>HTML(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>unweighted <span class="op">=</span> access_egress_mode.groupby(<span class="st">"access_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).size()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>unlinked <span class="op">=</span> access_egress_mode.groupby(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"access_mode"</span>, observed<span class="op">=</span><span class="va">True</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>).unlinked_weight.<span class="bu">sum</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>linked <span class="op">=</span> access_egress_mode.groupby(<span class="st">"access_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).linked_weight.<span class="bu">sum</span>()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>total_valid <span class="op">=</span> <span class="bu">len</span>(access_egress_mode.dropna())</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">len</span>(access_egress_mode)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>unlinked_total <span class="op">=</span> access_egress_mode.unlinked_weight.<span class="bu">sum</span>()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>linked_total <span class="op">=</span> access_egress_mode.linked_weight.<span class="bu">sum</span>()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): unweighted,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): unweighted <span class="op">/</span> unweighted.<span class="bu">sum</span>(),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked <span class="op">/</span> unlinked.<span class="bu">sum</span>(),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked <span class="op">/</span> linked.<span class="bu">sum</span>(),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.concat(</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        summary,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        pd.DataFrame(</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total valid"</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total_valid,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): total_valid <span class="op">/</span> total,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked.<span class="bu">sum</span>(),</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked.<span class="bu">sum</span>() <span class="op">/</span> unlinked_total,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked.<span class="bu">sum</span>(),</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked.<span class="bu">sum</span>() <span class="op">/</span> linked_total,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total"</span>,</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total,</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked_total,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked_total,</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            index<span class="op">=</span>[<span class="st">"Total valid"</span>, <span class="st">"Total"</span>],</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        ).set_index(<span class="st">"age_category"</span>),</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>).to_html(</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    formatters<span class="op">=</span>{</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>HTML(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -403,76 +405,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Local</td>
-<td>17,120</td>
-<td>48.55%</td>
-<td>110,754</td>
-<td>39.41%</td>
-<td>84,973</td>
-<td>37.70%</td>
+<td data-quarto-table-cell-role="th">Walked</td>
+<td>29,681</td>
+<td>87.56%</td>
+<td>301,777</td>
+<td>88.73%</td>
+<td>207,707</td>
+<td>87.76%</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Rapid</td>
-<td>2,376</td>
-<td>6.74%</td>
-<td>23,342</td>
-<td>8.31%</td>
-<td>20,449</td>
-<td>9.07%</td>
+<td data-quarto-table-cell-role="th">Bike</td>
+<td>663</td>
+<td>1.96%</td>
+<td>5,410</td>
+<td>1.59%</td>
+<td>4,318</td>
+<td>1.82%</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Express</td>
-<td>1,039</td>
-<td>2.95%</td>
-<td>7,013</td>
-<td>2.50%</td>
-<td>5,367</td>
-<td>2.38%</td>
+<td data-quarto-table-cell-role="th">Was dropped off by someone</td>
+<td>1,595</td>
+<td>4.71%</td>
+<td>15,831</td>
+<td>4.65%</td>
+<td>11,720</td>
+<td>4.95%</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">LRT</td>
-<td>14,333</td>
-<td>40.65%</td>
-<td>137,641</td>
-<td>48.98%</td>
-<td>112,734</td>
-<td>50.01%</td>
+<td data-quarto-table-cell-role="th">Drove alone and parked</td>
+<td>792</td>
+<td>2.34%</td>
+<td>5,397</td>
+<td>1.59%</td>
+<td>4,452</td>
+<td>1.88%</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Commuter Rail</td>
-<td>392</td>
-<td>1.11%</td>
-<td>2,268</td>
-<td>0.81%</td>
-<td>1,889</td>
+<td data-quarto-table-cell-role="th">Drove or rode with others and parked</td>
+<td>228</td>
+<td>0.67%</td>
+<td>1,610</td>
+<td>0.47%</td>
+<td>1,253</td>
+<td>0.53%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Wheelchair</td>
+<td>92</td>
+<td>0.27%</td>
+<td>971</td>
+<td>0.29%</td>
+<td>684</td>
+<td>0.29%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skateboard</td>
+<td>413</td>
+<td>1.22%</td>
+<td>4,199</td>
+<td>1.23%</td>
+<td>3,115</td>
+<td>1.32%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Carshare (i.e. car2go, Zipcar, etc.)</td>
+<td>5</td>
+<td>0.01%</td>
+<td>45</td>
+<td>0.01%</td>
+<td>21</td>
+<td>0.01%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Taxi, Uber, Lyft, etc.</td>
+<td>286</td>
 <td>0.84%</td>
+<td>3,821</td>
+<td>1.12%</td>
+<td>2,576</td>
+<td>1.09%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Free Shuttle</td>
+<td>137</td>
+<td>0.40%</td>
+<td>1,014</td>
+<td>0.30%</td>
+<td>798</td>
+<td>0.34%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Other</td>
+<td>5</td>
+<td>0.01%</td>
+<td>44</td>
+<td>0.01%</td>
+<td>42</td>
+<td>0.02%</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Total valid</td>
-<td>35,260</td>
-<td>100.00%</td>
-<td>281,018</td>
-<td>100.00%</td>
-<td>225,412</td>
-<td>100.00%</td>
+<td>33,892</td>
+<td>93.34%</td>
+<td>340,119</td>
+<td>91.98%</td>
+<td>236,688</td>
+<td>88.87%</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Total</td>
-<td>35,260</td>
+<td>36,310</td>
 <td>NaN</td>
-<td>281,018</td>
+<td>369,768</td>
 <td>NaN</td>
-<td>225,412</td>
+<td>266,337</td>
 <td>NaN</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</section>
-<section id="charts" class="level2">
-<h2 class="anchored" data-anchor-id="charts">Charts</h2>
-<div id="cell-7" class="cell" data-execution_count="4">
+<div id="cell-6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Chart</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>figure <span class="op">=</span> go.Figure()</span>
@@ -498,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>figure.update_layout(</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    title_text<span class="op">=</span><span class="st">"Unweighted and Weighted Responses by Transit Mode"</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    title_text<span class="op">=</span><span class="st">"Unweighted and Weighted Responses by Access Mode"</span>,</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    yaxis_range<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    yaxis_tickformat<span class="op">=</span><span class="st">",.0%"</span>,</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">"Age"</span>,</span>
@@ -508,9 +561,420 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>figure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>                            <div id="9af5204f-9c13-4e5f-abd5-2dace2e29704" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("9af5204f-9c13-4e5f-abd5-2dace2e29704")) {                    Plotly.newPlot(                        "9af5204f-9c13-4e5f-abd5-2dace2e29704",                        [{"name":"Unweighted","x":["Local","Rapid","Express","LRT","Commuter Rail"],"y":[0.48553601815087916,0.06738513896766875,0.029466817923993194,0.40649461145774246,0.011117413499716393],"type":"bar"},{"name":"Weighted (Unlinked)","x":["Local","Rapid","Express","LRT","Commuter Rail"],"y":[0.39411600551062587,0.08306182619920512,0.024956473986338917,0.4897943006240507,0.008071393679779541],"type":"bar"},{"name":"Weighted (Linked)","x":["Local","Rapid","Express","LRT","Commuter Rail"],"y":[0.37696889907344805,0.0907183691388745,0.02380922624784385,0.50012323217592,0.008380273363913747],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"title":{"text":"Unweighted and Weighted Responses by Transit Mode"},"yaxis":{"range":[0,1],"tickformat":",.0%","title":{"text":"Percent"}},"xaxis":{"title":{"text":"Age"}}},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="ca054b3b-68b8-41f9-8327-e68c5f7417d9" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("ca054b3b-68b8-41f9-8327-e68c5f7417d9")) {                    Plotly.newPlot(                        "ca054b3b-68b8-41f9-8327-e68c5f7417d9",                        [{"name":"Unweighted","x":["Walked","Bike","Was dropped off by someone","Drove alone and parked","Drove or rode with others and parked","Wheelchair","Skateboard","Carshare (i.e. car2go, Zipcar, etc.)","Taxi, Uber, Lyft, etc.","Free Shuttle","Other"],"y":[0.8756232114936425,0.019559253031241702,0.04705431159099625,0.023364899548632623,0.006726258960969998,0.0027141044930229816,0.012183969082809689,0.0001475056789686403,0.008437324837006224,0.004041655603740744,0.0001475056789686403],"type":"bar"},{"name":"Weighted (Unlinked)","x":["Walked","Bike","Was dropped off by someone","Drove alone and parked","Drove or rode with others and parked","Wheelchair","Skateboard","Carshare (i.e. car2go, Zipcar, etc.)","Taxi, Uber, Lyft, etc.","Free Shuttle","Other"],"y":[0.8872704931272961,0.015906535342152913,0.04654536805434047,0.015866525055419592,0.004733483694468992,0.002855937687528575,0.012344399380694924,0.0001321727597941762,0.01123424819561604,0.0029814822094239154,0.00012935449326438751],"type":"bar"},{"name":"Weighted (Linked)","x":["Walked","Bike","Was dropped off by someone","Drove alone and parked","Drove or rode with others and parked","Wheelchair","Skateboard","Carshare (i.e. car2go, Zipcar, etc.)","Taxi, Uber, Lyft, etc.","Free Shuttle","Other"],"y":[0.8775579873724235,0.01824430717862299,0.04951548380921972,0.018808803953365996,0.005295667375488182,0.0028914151540493254,0.01316188641252666,9.022424867318148e-05,0.010884334275773554,0.003370967989635038,0.00017892223022188502],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"title":{"text":"Unweighted and Weighted Responses by Access Mode"},"yaxis":{"range":[0,1],"tickformat":",.0%","title":{"text":"Percent"}},"xaxis":{"title":{"text":"Age"}}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('9af5204f-9c13-4e5f-abd5-2dace2e29704');
+var gd = document.getElementById('ca054b3b-68b8-41f9-8327-e68c5f7417d9');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+<section id="access-mode-abm-categories" class="level2">
+<h2 class="anchored" data-anchor-id="access-mode-abm-categories">Access Mode (ABM Categories)</h2>
+<div id="cell-8" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Table</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>unweighted <span class="op">=</span> access_egress_mode.groupby(<span class="st">"access_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).size()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>unlinked <span class="op">=</span> access_egress_mode.groupby(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"access_mode"</span>, observed<span class="op">=</span><span class="va">True</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>).unlinked_weight.<span class="bu">sum</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>linked <span class="op">=</span> access_egress_mode.groupby(<span class="st">"access_mode"</span>, observed<span class="op">=</span><span class="va">True</span>).linked_weight.<span class="bu">sum</span>()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>total_valid <span class="op">=</span> <span class="bu">len</span>(access_egress_mode.dropna())</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">len</span>(access_egress_mode)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>unlinked_total <span class="op">=</span> access_egress_mode.unlinked_weight.<span class="bu">sum</span>()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>linked_total <span class="op">=</span> access_egress_mode.linked_weight.<span class="bu">sum</span>()</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): unweighted,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): unweighted <span class="op">/</span> unweighted.<span class="bu">sum</span>(),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked <span class="op">/</span> unlinked.<span class="bu">sum</span>(),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked <span class="op">/</span> linked.<span class="bu">sum</span>(),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.concat(</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        summary,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        pd.DataFrame(</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total valid"</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total_valid,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): total_valid <span class="op">/</span> total,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked.<span class="bu">sum</span>(),</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked.<span class="bu">sum</span>() <span class="op">/</span> unlinked_total,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked.<span class="bu">sum</span>(),</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked.<span class="bu">sum</span>() <span class="op">/</span> linked_total,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total"</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked_total,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked_total,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            index<span class="op">=</span>[<span class="st">"Total valid"</span>, <span class="st">"Total"</span>],</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        ).set_index(<span class="st">"age_category"</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>).to_html(</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    formatters<span class="op">=</span>{</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>HTML(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">unweighted</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">unlinked_weight</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">linked_weight</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">percent</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">percent</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Walked</td>
+<td>29,681</td>
+<td>87.56%</td>
+<td>301,777</td>
+<td>88.73%</td>
+<td>207,707</td>
+<td>87.76%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Bike</td>
+<td>663</td>
+<td>1.96%</td>
+<td>5,410</td>
+<td>1.59%</td>
+<td>4,318</td>
+<td>1.82%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Was dropped off by someone</td>
+<td>1,595</td>
+<td>4.71%</td>
+<td>15,831</td>
+<td>4.65%</td>
+<td>11,720</td>
+<td>4.95%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Drove alone and parked</td>
+<td>792</td>
+<td>2.34%</td>
+<td>5,397</td>
+<td>1.59%</td>
+<td>4,452</td>
+<td>1.88%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Drove or rode with others and parked</td>
+<td>228</td>
+<td>0.67%</td>
+<td>1,610</td>
+<td>0.47%</td>
+<td>1,253</td>
+<td>0.53%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Wheelchair</td>
+<td>92</td>
+<td>0.27%</td>
+<td>971</td>
+<td>0.29%</td>
+<td>684</td>
+<td>0.29%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skateboard</td>
+<td>413</td>
+<td>1.22%</td>
+<td>4,199</td>
+<td>1.23%</td>
+<td>3,115</td>
+<td>1.32%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Carshare (i.e. car2go, Zipcar, etc.)</td>
+<td>5</td>
+<td>0.01%</td>
+<td>45</td>
+<td>0.01%</td>
+<td>21</td>
+<td>0.01%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Taxi, Uber, Lyft, etc.</td>
+<td>286</td>
+<td>0.84%</td>
+<td>3,821</td>
+<td>1.12%</td>
+<td>2,576</td>
+<td>1.09%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Free Shuttle</td>
+<td>137</td>
+<td>0.40%</td>
+<td>1,014</td>
+<td>0.30%</td>
+<td>798</td>
+<td>0.34%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Other</td>
+<td>5</td>
+<td>0.01%</td>
+<td>44</td>
+<td>0.01%</td>
+<td>42</td>
+<td>0.02%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Total valid</td>
+<td>33,892</td>
+<td>93.34%</td>
+<td>340,119</td>
+<td>91.98%</td>
+<td>236,688</td>
+<td>88.87%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Total</td>
+<td>36,310</td>
+<td>NaN</td>
+<td>369,768</td>
+<td>NaN</td>
+<td>266,337</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Table</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>unweighted <span class="op">=</span> access_egress_mode.groupby(<span class="st">"access_mode_abm"</span>, observed<span class="op">=</span><span class="va">True</span>).size()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>unlinked <span class="op">=</span> access_egress_mode.groupby(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"access_mode_abm"</span>, observed<span class="op">=</span><span class="va">True</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>).unlinked_weight.<span class="bu">sum</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>linked <span class="op">=</span> access_egress_mode.groupby(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"access_mode_abm"</span>, observed<span class="op">=</span><span class="va">True</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>).linked_weight.<span class="bu">sum</span>()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>total_valid <span class="op">=</span> <span class="bu">len</span>(access_egress_mode.dropna())</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">len</span>(access_egress_mode)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>unlinked_total <span class="op">=</span> access_egress_mode.unlinked_weight.<span class="bu">sum</span>()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>linked_total <span class="op">=</span> access_egress_mode.linked_weight.<span class="bu">sum</span>()</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): unweighted,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): unweighted <span class="op">/</span> unweighted.<span class="bu">sum</span>(),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked <span class="op">/</span> unlinked.<span class="bu">sum</span>(),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked <span class="op">/</span> linked.<span class="bu">sum</span>(),</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.concat(</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        summary,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        pd.DataFrame(</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total valid"</span>,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total_valid,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): total_valid <span class="op">/</span> total,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked.<span class="bu">sum</span>(),</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): unlinked.<span class="bu">sum</span>() <span class="op">/</span> unlinked_total,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked.<span class="bu">sum</span>(),</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): linked.<span class="bu">sum</span>() <span class="op">/</span> linked_total,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"age_category"</span>: <span class="st">"Total"</span>,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): total,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): unlinked_total,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>                    (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): linked_total,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>            index<span class="op">=</span>[<span class="st">"Total valid"</span>, <span class="st">"Total"</span>],</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        ).set_index(<span class="st">"age_category"</span>),</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>).to_html(</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    formatters<span class="op">=</span>{</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unweighted"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"count"</span>): <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>): <span class="st">"</span><span class="sc">{:,.2%}</span><span class="st">"</span>.<span class="bu">format</span>,</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>HTML(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">unweighted</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">unlinked_weight</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">linked_weight</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">percent</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">percent</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Walk transit</td>
+<td>30,849</td>
+<td>91.02%</td>
+<td>312,357</td>
+<td>91.85%</td>
+<td>215,825</td>
+<td>91.20%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">PNR transit</td>
+<td>1,020</td>
+<td>3.01%</td>
+<td>7,006</td>
+<td>2.06%</td>
+<td>5,705</td>
+<td>2.41%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">KNR transit</td>
+<td>1,595</td>
+<td>4.71%</td>
+<td>15,831</td>
+<td>4.66%</td>
+<td>11,720</td>
+<td>4.95%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">TNC transit</td>
+<td>428</td>
+<td>1.26%</td>
+<td>4,880</td>
+<td>1.43%</td>
+<td>3,395</td>
+<td>1.43%</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Total valid</td>
+<td>33,892</td>
+<td>93.34%</td>
+<td>340,075</td>
+<td>91.97%</td>
+<td>236,645</td>
+<td>88.85%</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Total</td>
+<td>36,310</td>
+<td>NaN</td>
+<td>369,768</td>
+<td>NaN</td>
+<td>266,337</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Chart</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>figure <span class="op">=</span> go.Figure()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>figure.add_trace(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>summary.index,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>summary[(<span class="st">"unweighted"</span>, <span class="st">"percent"</span>)],</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"Unweighted"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>figure.add_trace(</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>summary.index,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>summary[(<span class="st">"unlinked_weight"</span>, <span class="st">"percent"</span>)],</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"Weighted (Unlinked)"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>figure.add_trace(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>summary.index,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>summary[(<span class="st">"linked_weight"</span>, <span class="st">"percent"</span>)],</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"Weighted (Linked)"</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>figure.update_layout(</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    title_text<span class="op">=</span><span class="st">"Unweighted and Weighted Responses by Access Mode (ABM Categories)"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    yaxis_range<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    yaxis_tickformat<span class="op">=</span><span class="st">",.0%"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">"Age"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"Percent"</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>figure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>                            <div id="fc4007e8-ad7a-450d-8d46-ad96930b2875" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("fc4007e8-ad7a-450d-8d46-ad96930b2875")) {                    Plotly.newPlot(                        "fc4007e8-ad7a-450d-8d46-ad96930b2875",                        [{"name":"Unweighted","x":["Walk transit","PNR transit","KNR transit","TNC transit"],"y":[0.9102147999527912,0.0300955977811873,0.04706125339313112,0.012628348872890358],"type":"bar"},{"name":"Weighted (Unlinked)","x":["Walk transit","PNR transit","KNR transit","TNC transit"],"y":[0.9184961771452324,0.020602673798317653,0.04655138968576403,0.01434975937068599],"type":"bar"},{"name":"Weighted (Linked)","x":["Walk transit","PNR transit","KNR transit","TNC transit"],"y":[0.9120187765511271,0.024108784926421153,0.04952434481544438,0.014348093707007263],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"title":{"text":"Unweighted and Weighted Responses by Access Mode (ABM Categories)"},"yaxis":{"range":[0,1],"tickformat":",.0%","title":{"text":"Percent"}},"xaxis":{"title":{"text":"Age"}}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('fc4007e8-ad7a-450d-8d46-ad96930b2875');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{

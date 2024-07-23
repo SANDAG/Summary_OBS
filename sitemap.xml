@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/mode/transit_mode.html</loc>
-    <lastmod>2024-07-10T21:40:50.615Z</lastmod>
+    <lastmod>2024-07-23T18:09:48.346Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/mode/access_egress_mode.html</loc>
+    <lastmod>2024-07-23T18:09:28.200Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/index.html</loc>
@@ -10,18 +14,22 @@
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2023/demographics/age.html</loc>
-    <lastmod>2024-07-10T21:40:27.550Z</lastmod>
+    <lastmod>2024-07-23T18:08:57.759Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/demographics/age.html</loc>
-    <lastmod>2024-07-10T21:40:14.592Z</lastmod>
+    <lastmod>2024-07-23T18:08:43.357Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/index.html</loc>
-    <lastmod>2024-07-01T19:33:00.512Z</lastmod>
+    <lastmod>2024-07-12T20:07:16.735Z</lastmod>
+  </url>
+  <url>
+    <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/mode/access_egress_mode.html</loc>
+    <lastmod>2024-07-23T18:09:18.041Z</lastmod>
   </url>
   <url>
     <loc>https://SANDAG.github.io/Summary_OBS/notebooks/2015/mode/transit_mode.html</loc>
-    <lastmod>2024-07-10T21:40:40.626Z</lastmod>
+    <lastmod>2024-07-23T18:09:38.163Z</lastmod>
   </url>
 </urlset>
