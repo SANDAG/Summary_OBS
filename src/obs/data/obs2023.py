@@ -104,6 +104,101 @@ class OBS2023:
             .set_index("ID")
         )
 
+    @property
+    def access_egress_mode(self) -> pd.DataFrame:
+        return pd.DataFrame(
+            {
+                "access_mode": (
+                    self.results["ORIGIN_TRANSPORT"].astype(
+                        pd.CategoricalDtype(
+                            categories=[
+                                "Walk",
+                                "Wheelchair",
+                                "Bike (personal)",
+                                "E-Bike (personal)",
+                                "E-Bike (shared)",
+                                "Skateboard",
+                                "E-scooter (personal)",
+                                "E-scooter (shared)",
+                                "Uber, Lyft, etc. (private)",
+                                "Uber, Lyft, etc. (pool or shared)",
+                                "Taxi",
+                                "Was dropped off by someone",
+                                "Drove alone and parked",
+                                "Drove or rode with others and parked",
+                                "Electric vehicle shuttle",
+                                "Other shuttle",
+                                "Other",
+                            ],
+                            ordered=True,
+                        )
+                    )
+                ),
+                "egress_mode": (
+                    self.results["DESTIN_TRANSPORT"].astype(
+                        pd.CategoricalDtype(
+                            categories=[
+                                "Walk",
+                                "Wheelchair",
+                                "Bike (personal)",
+                                "E-Bike (personal)",
+                                "E-Bike (shared)",
+                                "Skateboard",
+                                "E-scooter (personal)",
+                                "E-scooter (shared)",
+                                "Uber, Lyft, etc. (private)",
+                                "Uber, Lyft, etc. (pool or shared)",
+                                "Taxi",
+                                "Be picked up by someone",
+                                "Get in a parked vehicle & drive alone",
+                                "Get in a parked vehicle & drive/ride w/others",
+                                "Electric vehicle shuttle",
+                                "Other shuttle",
+                                "Other",
+                                "Refused/No Answer",
+                            ],
+                            ordered=True,
+                        )
+                    )
+                ),
+            }
+        ).assign(
+            access_mode_abm=lambda df: df["access_mode"]
+            .astype("string")
+            .map(
+                {
+                    "Walk": "Walk transit",
+                    "Wheelchair": "Walk transit",
+                    "Bike (personal)": "Walk transit",
+                    "E-Bike (personal)": "Walk transit",
+                    "E-Bike (shared)": "Walk transit",
+                    "Skateboard": "Walk transit",
+                    "E-scooter (personal)": "Walk transit",
+                    "E-scooter (shared)": "Walk transit",
+                    "Uber, Lyft, etc. (private)": "TNC transit",
+                    "Uber, Lyft, etc. (pool or shared)": "TNC transit",
+                    "Taxi": "TNC transit",
+                    "Was dropped off by someone": "KNR transit",
+                    "Drove alone and parked": "PNR transit",
+                    "Drove or rode with others and parked": "PNR transit",
+                    "Electric vehicle shuttle": "TNC transit",
+                    "Other shuttle": "TNC transit",
+                    "Other": None,
+                }
+            )
+            .astype(
+                pd.CategoricalDtype(
+                    categories=[
+                        "Walk transit",
+                        "PNR transit",
+                        "KNR transit",
+                        "TNC transit",
+                    ],
+                    ordered=True,
+                ),
+            )
+        )
+
     @cached_property
     def age(self) -> pd.DataFrame:
         def map_age_category(age: int | None) -> str | None:
@@ -199,4 +294,7 @@ class OBS2023:
         self.results.to_parquet(self.config.save_dir / "results.parquet")
         self.transit_mode.to_parquet(self.config.save_dir / "transit_mode.parquet")
         self.age.to_parquet(self.config.save_dir / "age.parquet")
+        self.access_egress_mode.to_parquet(
+            self.config.save_dir / "access_egress_mode.parquet"
+        )
         self.weights.to_parquet(self.config.save_dir / "weights.parquet")

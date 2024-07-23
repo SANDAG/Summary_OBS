@@ -104,6 +104,82 @@ class OBS2015:
         )
 
     @property
+    def access_egress_mode(self) -> pd.DataFrame:
+        return pd.DataFrame(
+            {
+                "access_mode": (
+                    self.results["ACCESS_MODE"].astype(
+                        pd.CategoricalDtype(
+                            categories=[
+                                "Walked",
+                                "Bike",
+                                "Was dropped off by someone",
+                                "Drove alone and parked",
+                                "Drove or rode with others and parked",
+                                "Wheelchair",
+                                "Skateboard",
+                                "Carshare (i.e. car2go, Zipcar, etc.)",
+                                "Taxi, Uber, Lyft, etc.",
+                                "Free Shuttle",
+                                "Other",
+                            ],
+                            ordered=True,
+                        )
+                    )
+                ),
+                "egress_mode": (
+                    self.results["EGRESS_MODE"].astype(
+                        pd.CategoricalDtype(
+                            categories=[
+                                "Walk",
+                                "Bike",
+                                "Be picked up by someone",
+                                "Get in a parked vehicle and drive alone",
+                                "Get in a parked vehicle and drive/ride with others",
+                                "Wheelchair",
+                                "Skateboard",
+                                "Carshare (i.e. car2go, Zipcar, etc.)",
+                                "Taxi, Uber, Lyft, etc.",
+                                "Free Shuttle",
+                                "Other",
+                            ],
+                            ordered=True,
+                        )
+                    )
+                ),
+            }
+        ).assign(
+            access_mode_abm=lambda df: df["access_mode"]
+            .astype("string")
+            .map(
+                {
+                    "Walked": "Walk transit",
+                    "Bike": "Walk transit",
+                    "Was dropped off by someone": "KNR transit",
+                    "Drove alone and parked": "PNR transit",
+                    "Drove or rode with others and parked": "PNR transit",
+                    "Wheelchair": "Walk transit",
+                    "Skateboard": "Walk transit",
+                    "Carshare (i.e. car2go, Zipcar, etc.)": "TNC transit",
+                    "Taxi, Uber, Lyft, etc.": "TNC transit",
+                    "Free Shuttle": "TNC transit",
+                    "Other": None,
+                }
+            )
+            .astype(
+                pd.CategoricalDtype(
+                    categories=[
+                        "Walk transit",
+                        "PNR transit",
+                        "KNR transit",
+                        "TNC transit",
+                    ],
+                    ordered=True,
+                ),
+            )
+        )
+
+    @property
     def age(self) -> pd.DataFrame:
         def map_age_category(age: int | None) -> str | None:
             if age and not pd.isna(age):
@@ -207,4 +283,7 @@ class OBS2015:
         self.results.to_parquet(self.config.save_dir / "results.parquet")
         self.transit_mode.to_parquet(self.config.save_dir / "transit_mode.parquet")
         self.age.to_parquet(self.config.save_dir / "age.parquet")
+        self.access_egress_mode.to_parquet(
+            self.config.save_dir / "access_egress_mode.parquet"
+        )
         self.weights.to_parquet(self.config.save_dir / "weights.parquet")
